@@ -1,0 +1,168 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 2px;
+    font-family: sans-serif;
+}
+.contenedor{
+    display: flex;
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    height: 100%;
+    gap: 20px;
+    padding: 20px 30px;
+    align-items: center;
+}
+.fotos{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    height: max-content;
+    border: dashed 1.5px rgb(232, 232, 232);
+    border-radius: 8px;
+}
+.fotos img{
+    display: flex;
+    width: 100%;
+    max-width: 350px;
+    height: max-content;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.descripcion{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 10px;
+    gap: 30px;
+    text-align: left;
+}
+.titulo{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 20px;
+    gap: 20px;
+}
+.talla{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+.agregar{
+    display: flex;
+    justify-content: center;
+}
+.add{
+    display: flex;
+    border: solid rgb(105, 93, 93) 0.5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.curva-izq{
+    border-start-start-radius: 8px;
+    border-end-start-radius: 8px;
+}
+.curva-der{
+    border-start-end-radius: 8px;
+    border-end-end-radius: 8px;
+}
+.seleccion{
+    width: 200px;
+    max-width: 200px;
+    padding: 0 10px;
+}
+
+
+button {
+    display: flex;
+    width: max-content;
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
+    box-shadow: 0px 1px 3px 3px rgb(218, 218, 218);
+    cursor: pointer;
+}
+button:hover {
+    border: 1px solid white;
+}
+  
+button:active {
+    box-shadow: 4px 4px 12px #c5c5c5,
+               -4px -4px 12px #ffffff;
+}
+
+@media screen and (max-width: 600px){
+    .contenedor{
+        flex-direction: column;
+    }
+    .fotos{
+        width: 100%;
+    }
+    .fotos img{
+        display: flex;
+        width: 100%;
+        height: max-content;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .descripcion{
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .titulo{
+        padding-bottom: 0px;
+    }
+    /* .talla{
+        flex-direction: column;
+    } */
+    .seleccion{
+        width: 100%;
+        max-width: none;
+        padding: 10px 10px;
+    }
+    .talla{
+        justify-content: center;
+    }
+}
+
+.modal{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px 30px;
+}
+.box{
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.modalMensaje{
+    display: flex;
+    width: clamp(200px, 100%, 300px);
+    height: max-content;
+    background-color: #e8e8e8;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 10px 10px rgb(85, 85, 85);
+    line-height: 2;
+}

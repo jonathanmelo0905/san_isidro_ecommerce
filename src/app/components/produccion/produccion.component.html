@@ -1,0 +1,10 @@
+<div class="contenedor">
+    <h2>Etapas del proceso de producción</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae sit cupiditate aut amet corrupti? Beatae unde alias, ducimus recusandae nulla cupiditate corporis nam rem officia. Illo repudiandae quo sequi!</p>
+    <div class="box">
+        <div *ngFor="let datos of produccion" class="card">
+            <p>{{datos.tittle}}</p>
+            <img class="fotos" src={{datos.foto}} alt="">
+        </div>
+    </div>
+</div>

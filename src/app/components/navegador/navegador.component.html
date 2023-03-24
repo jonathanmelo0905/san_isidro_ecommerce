@@ -1,0 +1,38 @@
+<div class="contenedor">
+    <div class="box3">
+        <div routerLink="/" class="logo">
+            <img class="foto" src="assets/imagenes/logo-tranparente.png" alt="">
+        </div>
+        <div class="lista">
+            <a routerLink="/">INICIO</a>
+            <a  routerLink="/nosotros">NOSOTROS</a>
+            <a routerLink="/productos">PRODUCTOS</a>
+            <a routerLink="/produccion">PRODUCCIÓN</a>
+            <a>SOCIAL Y AMBIENTAL</a>
+            <a>CONTACTO</a>
+        </div>
+        <div class="box">
+            <div class="boton_menu">
+                <img (click)="menu()" class="car" src="assets/logos/menu.png" alt="">
+            </div>
+            <div class="logo2">
+                <app-icon-carrito></app-icon-carrito>
+            </div>
+        </div>
+    </div>
+</div>
+<div #menus class="contenedor2">
+    <div class="mitad">
+        <div class="cerrar"> <img (click)="menu()" class="car" style="filter: invert(1)" src="assets/logos/volver.png" alt=""></div>
+        <div class="lista2">
+            <a (click)="menu()" routerLink="/">INICIO</a>
+            <a (click)="menu()"  routerLink="/nosotros">NOSOTROS</a>
+            <a (click)="menu()" routerLink="/productos">PRODUCTOS</a>
+            <a (click)="menu()" routerLink="/produccion">PRODUCCIÓN</a>
+            <a (click)="menu()">SOCIAL Y AMBIENTAL</a>
+            <a (click)="menu()">CONTACTO</a>
+        </div>
+    </div>
+    <div (click)="menu()" class="mitad2">
+    </div>
+</div>

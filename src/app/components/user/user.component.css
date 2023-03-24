@@ -1,0 +1,15 @@
+:host{
+    display: flex;
+    line-height: 30px;
+    justify-content: space-around;
+    padding: 0 30px;
+    margin: 10px 0;
+}
+
+.left, .right{
+    flex: 1;
+}
+
+.boton{
+    float: right;
+}

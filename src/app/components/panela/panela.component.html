@@ -1,0 +1,97 @@
+
+
+<div class="portada">
+    <img class="portada-img" src="assets/imagenes/fondoSanmiguel.jpg" alt="">
+    <div class="productos">
+        <img class="fotoProductos" src="assets/imagenes/productos-general.png" alt="">
+    </div>
+    <div class="textFondo">
+        <div class="box2">
+            <section class="animacion">
+                <h1>Panela San Isidro</h1>
+                <p class="texto">Hechas con manos de familias campesinas colombianas</p>
+            </section>
+        </div>
+    </div>
+</div>
+<div class="contenedor">
+    <h2 class="color">Encuentranos en:</h2>
+    <div class="marcas">
+        <div class="alkosto">
+            <img src="assets/logos/alkosto-logo.svg" alt="">
+        </div>
+        <div class="tiendas">
+            <img class="icon" src="assets/logos/naturista.png" alt="">
+            <p>Tiendas Naturistas</p>           
+        </div>
+        <div class="tiendas">
+            <img class="icon" src="assets/logos/restaurante.png" alt="https://www.flaticon.es/iconos-gratis/restaurante -- Restaurante iconos creados por Freepik - Flaticon">
+            <p>Restaurantes</p>           
+        </div>
+    </div>
+    
+    <section>
+        <h2 class="color">¿Porque elegir <b>Panela San Isidro?</b></h2>
+        <div class="info">
+          <div class="info-panela">
+            <img class="info-foto" src="assets/imagenes/PANELA.jpg" alt="panela" >
+            <article class="info2 efecto1">
+              <h2>Saludable</h2>
+              <p>
+                Es un producto energizante, alimenticio y medicinal, con alto
+                valor nutricional.
+              </p>
+            </article>
+          </div>
+          <div class="info-panela">
+            <img
+              class="info-foto"
+              src="assets/imagenes/panela-proceso.jpeg"
+              alt="panela"
+            >
+            <article class="info2">
+              <h2>Ecologica</h2>
+              <p>
+                Panela San Isidro es deliciosa, natural y no contiene quimicos.
+              </p>
+            </article>
+          </div>
+          <div class="info-panela">
+            <img
+              class="info-foto"
+              src="assets/imagenes/panela-ecologica.jpg"
+              alt="panela"
+            >
+            <article class="info2 efecto3">
+              <h2>Responsable</h2>
+              <p>
+                Panela San Isidro es una empresa que colabora con la proteccion
+                del medio ambiente.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    <div class="enviosinfo">
+        <div class="tiendas">
+            <img class="icon" src="assets/logos/atencion.png" alt="https://www.flaticon.es/iconos-gratis/servicio-al-cliente --Servicio al cliente iconos creados por tuktukdesign - Flaticon">
+            <p [style.--colorverde]="colorverde">Atencion al cliente</p>
+        </div>
+        <div class="tiendas">
+            <img class="icon" src="assets/logos/entrega.png" alt="https://www.flaticon.es/iconos-gratis/entrega -- Entrega iconos creados por Kiranshastry - Flaticon">
+            <p>Envios a todo colombia</p>           
+        </div>
+    </div>
+    
+    <p class="color">Nuestros productos:</p>
+    <div class="contenedor2">
+        <div class="slider">
+            <div class="slide-track">
+                <div  routerLink="/productos" *ngFor="let producto of productos" class="slide">
+                    <img src={{producto.url}} class="icon-logo" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

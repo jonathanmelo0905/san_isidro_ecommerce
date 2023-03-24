@@ -1,0 +1,111 @@
+<div class="contenedor" *ngIf="listaProductos.length > 0">
+    <div class="mensaje" *ngIf="stateSend">
+        <img class="icon-alerta" src="assets/logos/icon-alerta.png" alt="">
+        <p>Nuestros tiempos de entrega para Bogotá y Medellín son de 2 a 3 días hábiles y de 3 a 8 días hábiles en el resto del país.</p>
+    </div>
+    <div class="mensaje goodtext" *ngIf="carUpdate">
+        <img class="icon-alerta" src="assets/logos/icon-chulo.png" alt="">
+        <p>Carrito actualizado.</p>
+    </div>
+    <!-- <div class="mensaje goodtext">
+        <img class="icon-alerta" src="assets/logos/icon-chulo.png" alt="">
+        <p>El descuento
+            Promo 13-18 de diciembre (Toda la tienda)
+            ahora se ha aplicado a tu carrito de compras!</p>
+    </div> -->
+
+    <div *ngIf="listaProductos.length > 0" class="descripcion">
+        <!-- version de escritorio -->
+        <table class="tabla1">
+            <tr>
+                <th></th>
+                <th></th>
+                <th><p>PRODUCTOS</p></th>
+                <th>PRECIO</th>
+                <th>CATIDAD</th>
+                <th>SUBTOTAL</th>
+            </tr>
+            <tr *ngFor="let producto of listaProductos; index as i" style="border-bottom: solid rgb(143, 139, 139) 2px;">
+                <td><img (click)="eliminarProduct(producto)" class="icon" src="assets/logos/cruz.png" alt=""></td>
+                <td><img class="panela-foto" src={{producto.url}} alt=""></td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.precio | currency:'' :'symbol':'3.0'}}</td>
+                <td>
+                    <div class="agregar">
+                        <p (click)="addProducto(2, i)" class="add curva-izq">-</p>
+                        <p class="add">{{ amountProduct[i] }}</p>
+                        <p (click)="addProducto(1, i)" class="add curva-der">+</p>
+                    </div>
+                </td>
+                <td>{{producto.subtotal | currency:'' :'symbol':'3.0'}}</td>
+            </tr>
+            <button (click)="actualizarCarrito()" class="boton" style="margin-top: 30px;">Actualizar carrito</button>
+        </table>
+        <!-- version responsive -->
+        <div class="car-products">
+            <ng-container *ngFor="let producto of listaProductos; index as i;">
+                <div class="car-foto">
+                    <img class="panela-foto" src={{producto.url}} alt="">
+                </div>
+                <div class="car-descrip">
+                    <p style="padding-bottom: 30px;">{{producto.name}}</p>
+                    <div class="car-info">
+                        <p>Precio:</p>
+                        <p>${{producto.precio | currency:'' :'symbol':'3.0'}}</p>
+                    </div>
+                    <div class="car-info">
+                        <p>Cantidad:</p>
+                        <div class="agregar">
+                            <p (click)="addProducto(2, i)" class="add curva-izq">-</p>
+                            <p class="add">{{ amountProduct[i] }}</p>
+                            <p (click)="addProducto(1, i)" class="add curva-der">+</p>
+                        </div>
+                    </div>
+                    <div class="car-info">
+                        <p>Subtotal:</p>
+                        <p>${{producto.subtotal | currency:'' :'symbol':'3.0'}}</p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="car-products2">
+            <button (click)="actualizarCarrito()" class="boton" style="margin-top: 30px;">Actualizar carrito</button>
+        </div>
+        <!-- descripcion de la factura -->
+        <div class="factura">
+            <h2>TOTAL DEL CARRITO</h2>
+            <div class="papel">
+                <div class="resumen">
+                    <p>Subtotal	</p>
+                    <p>{{totalCarrito | currency:'' :'symbol':'3.0'}}</p>
+                </div>
+                <div class="resumen">
+                    <p>Envío</p>
+                    <p>
+                        Los cosotos de envio se calculan al finalizar la compra.
+                    </p>
+                </div>
+                <div class="resumen">
+                    <p>Total</p>
+                    <p>{{totalPagar | currency:'' :'symbol':'3.0'}}</p>
+                </div>
+            </div>
+            <button routerLink="/checkout" class="boton"><p>Finalizar compra</p></button>
+        </div>
+    </div>
+    <div class="mensaje" *ngIf="minimoValor">
+        <img class="icon-alerta" src="assets/logos/icon-alerta.png" alt="">
+        <p>El valor minimo del pedido deber de: $60,000, </p>
+    </div>
+</div>
+<div class="contenedor" *ngIf="listaProductos.length === 0">
+    <div class="icon-logo">     
+        <img class="car" src="assets/imagenes/carrito.png" alt="">
+    </div>
+    <h1>Tu carrito esta vacio</h1>
+    <p>
+        Antes de proceder al pago, debe agregar algunos productos a su carrito de compras.
+        Encontrará muchos productos interesantes en nuestra tienda.
+    </p>
+    <button routerLink="/productos" class="boton" style="width: 300px;">Volver a la tienda</button>
+</div>

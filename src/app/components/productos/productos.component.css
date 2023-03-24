@@ -1,0 +1,160 @@
+*{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1366px;
+    overflow: hidden;
+    height: max-content;
+    gap: 30px;
+    padding: 20px 0px;
+}
+.titulo{
+    font-size: xx-large;
+    color: rgb(17, 188, 17);
+}
+.box{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 220px));
+    width: 100%;
+    max-width: 800px;
+    gap: 60px;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 400px;
+    /* box-shadow: 0 1px 3px 3px rgba(198, 198, 198); */
+    padding: 8px;
+    gap: 20px;
+    border-radius: 6px;
+    align-items: center;
+}
+.card-imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 190px;
+    border-radius: 6px;
+    /* background-color: rgb(238, 238, 238); */
+}
+.card-foto{
+    width: 180px;
+    height: 180px;
+    transition: 1s;
+    animation: float linear 3s infinite;
+}
+@keyframes float{
+    0%, 100%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(6px);
+    }
+}
+.card-foto:hover{
+    rotate: -10deg;
+}
+p{
+    font-size: medium;
+}
+.texto{
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    font-size: small;
+    text-align: center;
+    justify-content: center;
+}
+.precio{
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    font-size: small;
+    text-align: center;
+    justify-content: center;
+    font-size: large;
+}
+.botonpay{
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    width: 80%;
+    height: max-content;
+    padding: 10px;
+    border-radius: 4px;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.botonpay:hover{
+    background: rgb(110, 182, 28);
+    box-shadow: 0 1px 3px 3px rgba(198, 198, 198);
+    color: white;
+    border-radius: 24px;
+}
+
+.marcas{
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: rgb(225, 225, 225);
+    padding: 20px 0;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    animation-name: ejemplo;
+    animation-duration: 4s;
+}
+@keyframes ejemplo{
+    0%{
+        left: -100%;
+    }
+    100%{
+        left: 0%;
+    }
+}
+.alkosto{
+    display: flex;
+    width: 150px;
+    height: fit-content;
+
+}
+.tiendas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 10px;
+}
+.icon{
+    width: 40px;
+    aspect-ratio: 1;
+}
+
+@media screen and (max-width: 600px) {
+    .marcas{
+        flex-direction: column;
+    }
+}

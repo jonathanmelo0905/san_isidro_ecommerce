@@ -1,0 +1,7 @@
+{
+    "/api/*":{
+        "target":"https://mobile.servientrega.com/Services/RateQuote/",
+        "secure": false,
+        "loglevel":"debug"
+    }
+}

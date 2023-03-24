@@ -1,0 +1,56 @@
+<div class="contenedor">
+    <h1>Estado de su compra</h1>
+    <div class="box">
+        <h3>Gracias. {{menssaje}}</h3>
+        <p>Hemos aceptado tu pedido <b>con refrencia de pedido: {{referenceCode}}</b> y estamos preparándolo. Vuelve a esta página para recibir actualizaciones sobre el estado de tu envío.</p>
+        <table class="vista1">
+            <tr>
+                <th>REFERENCIA DE PAGO:</th>
+                <th>FECHA:</th>
+                <th>TOTAL:</th>
+                <th>FORMA DE PAGO:</th>
+            </tr>
+            <tr>
+                <td>{{reference_pol}}</td>
+                <td>{{processingDate}}</td>
+                <td>{{txValue | currency:'' :'symbol':'3.0'}} {{currency}}</td>
+                <td>{{lapPaymentMethodType}} {{lapPaymentMethod}}</td>
+            </tr>
+        </table>
+        <table class="vista2">
+            <tr>
+                <th>REFERENCIA DE PAGO:</th>
+                <th>FECHA:</th>
+            </tr>
+            <tr>
+                <td>{{reference_pol}}</td>
+                <td>{{processingDate}}</td>
+            </tr>
+            <tr>
+                <th>TOTAL:</th>
+                <th>FORMA DE PAGO:</th>
+            </tr>
+            <tr>
+                <td>{{txValue | currency:'' :'symbol':'3.0'}} {{currency}}</td>
+                <td>{{lapPaymentMethodType}} {{lapPaymentMethod}}</td>
+            </tr>
+        </table>
+        <h3>Actualizaciones del pedido</h3>
+        <p>
+            Recibirás actualizaciones del envío y entrega de tu pedido por correo electrónico.
+        </p>
+        <p>
+            Tambien puedes visitar el siguiente enlace <a href="http://192.168.1.8/#/orders">panelasanisidro/#/orders</a> y con tu numero de <b>referencia de pago</b>: <b>{{reference_pol}}</b> puedes ver el estado actual de tu pedido.
+        </p>
+        <div class="facturacion">
+            <h4 style="margin-bottom: 15px;">Dirección de facturación</h4>
+            <p>JONATHAN MELO</p>
+            <p>1077974718</p>
+            <p>Conjunto Altos de Villa Crisly</p>
+            <p>torre 15, apartamento 202</p>
+            <p>253410 villeta CUN</p>
+            <p>Colombia</p>
+        </div>
+        <p>¿Necesitas ayuda? <b>Ponte en contacto con nosotros</b></p>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="contenedor">
+    <div class="fotos">
+        <img src={{producto.url}} alt="">
+    </div>
+    <div class="descripcion">
+        <h3>Descripcion del producto:</h3>
+        <div class="titulo">
+            <h2>{{producto.name}}</h2>
+            <h3>Precio: {{producto.precio | currency:'' :'symbol':'3.0'}}</h3>
+        </div>
+        <p>
+            Toda la linea de {{producto.name}} tiene una vida útil de {{meses}} meses. 
+        </p>
+        <p>
+            {{producto.name}} san isidro, es un producto premium el cual es hecho por familias campesinas colombianas bajo métodos 
+            tradicionales, los cuales permiten obtener un producto con granulometría fina, mediante la evaporación de jugo de caña panelera, 
+            la cual no contiene colorantes, aditivos químicos, ni transgénicos y durante todo el proceso se involucran prácticas ecológicas de 
+            producción.
+        </p>
+        <p>
+            <b>Ingredientes</b>: Jugo de caña panelera ecológica, auxiliares de procesamiento: 
+            (Zumo de balso orgánico, carbonato de calcio en grado alimenticio, bicarbonato de sodio y aceite vegetal).
+        </p>
+        <p>
+            <b>Recomendaciones de almacenamiento</b>: Almacénese en un lugar seco, limpio, ventilado, alejado de sustancias tóxicas, sin exposición directa a la luz, 
+            ni a la humedad, se recomienda usar estibas con una distancia mínima de 10 cm al piso y 5 cm con distancia a la pared.
+        </p>
+        <button (click)="productoSeleccionado(producto)">Agregar al carrito</button>
+        <p *ngIf="stateCarrito" style="font-size: x-small;">(Si deseas agregar mas unidades del producto puedes hacerlo desde el carrito de compras)</p>
+        <button routerLink="/carrito" *ngIf="stateCarrito"> Ir al carrito</button>
+    </div>
+</div>
+
+    <div class="box" *ngIf="stateModal">
+        <div class="modalMensaje">
+            <h3>{{mensaje}}</h3>
+        </div>
+    </div>

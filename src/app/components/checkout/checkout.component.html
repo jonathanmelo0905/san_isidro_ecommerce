@@ -1,0 +1,118 @@
+<div class="contenedor" id="inicio">
+    <form  novalidate [formGroup]="user" (ngSubmit)="realizarCompra(user.value)">
+        <div class="box">
+            <h1>Facturacion y envio</h1>
+            <div class="estilo">
+                <select name="" id="" formControlName="type" [(ngModel)]="dataClient.type">
+                    <option value="CC">Cédula</option>
+                    <option value="NIT">Nit</option>
+                </select>
+                <div class="form__group">
+                    <input type="number" class="form__field w-100" placeholder="Input text" formControlName="cedula" [(ngModel)]="dataClient.cedula">
+                    <label for="name" class="form__label"> N° identificación* </label>
+                </div>
+            </div>
+            <div class="estilo">
+                <div class="form__group">
+                    <input type="text" class="form__field w-100" placeholder="Input text" formControlName="names" [(ngModel)]="dataClient.names">
+                    <label for="name" class="form__label"> Nombre* </label>
+                </div>
+                <div class="form__group">
+                    <input type="text" class="form__field w-100" placeholder="Input text" formControlName="surnames" [(ngModel)]="dataClient.surnames">
+                    <label for="name" class="form__label"> Apellidos* </label>
+                </div>
+            </div>
+            <div class="form__group" style="width: 100%" >
+                <input type="email" class="form__field" style="width: 100%" placeholder="Input text" formControlName="email" [(ngModel)]="dataClient.email">
+                <label for="name" class="form__label"> Correo* </label>
+            </div>
+            <h3>Colombia:</h3>
+            <select style="width: 100%" (ngModelChange)="filterMunicipios($event)" name="departamento" formControlName="departamento">
+                <option *ngFor="let dep of departamentos" [ngValue]="dep">{{dep.departamento | currencyPipe}}</option>
+            </select>
+            <select *ngIf="stateMun" style="width: 100%" name="municipio" id="" (ngModelChange)="cotizador($event)" formControlName="municipio">
+                <option>Elija una opcion...</option>
+                <option class="opcion" *ngFor="let mun of municipios" [ngValue]="mun">{{mun.municipio}}</option>
+            </select>
+            <div class="form__group" style="width: 100%" >
+                <input type="text" class="form__field" style="width: 100%" placeholder="Input text" formControlName="direccion" [(ngModel)]="dataClient.direccion">
+                <label for="name" class="form__label"> Direccion de envio* </label>
+            </div>
+            <div class="form__group" style="width: 100%" >
+                <input type="tel" class="form__field" style="width: 100%" placeholder="Input text" formControlName="telefono" [(ngModel)]="dataClient.telefono">
+                <label for="name" class="form__label"> Telefono* </label>
+            </div>
+            <h2>Informacion adiccional:</h2>
+            <h4>Notas del pedido (opcional)</h4>
+            <textarea class="textTarea" name="" id="" formControlName="nota" [(ngModel)]="dataClient.nota"></textarea>
+        </div>
+        <div class="box2">
+            <h1> Resumen de tu pedido</h1>
+            <h4>Productos:</h4>
+            <div class="box3">
+                <ng-container *ngFor="let product of listCar">
+                    <div class="info" style="align-items: flex-start; gap: 5px; border-bottom: solid rgb(223, 223, 223) 1.5px;">
+                        <img class="panela-foto" src={{product.url}} alt="">
+                        <p>{{product.name}}</p>
+                        <b>x{{product.cantidad}}</b>
+                    </div>
+                    <div class="info" style="margin: 30px;">
+                        <b style="font-size: medium;">{{product.subtotal | currency:'' :'symbol':'3.0'}}</b>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="box3" style="margin-top: -30px; border-bottom: solid rgb(223, 223, 223) 1.5px; padding-bottom: 5px;">
+                <p class="info" style="font-size: medium;">SubTotal</p>
+                <b class="info" style="font-size: medium;">{{totalCarrito | currency:'' :'symbol':'3.0'}}</b>
+            </div>
+            <div class="box3" style="margin-top: -30px; border-bottom: solid rgb(223, 223, 223) 1.5px; padding-bottom: 5px;">
+                <p class="info" style="font-size: medium;">Envio</p>
+                <p class="info2" style="font-size: x-small;">Zonal (de 3 a 8 días hábiles de entrega): <b style="font-size: medium;">{{totalEnvio | currency:'' :'symbol':'3.0'}}</b></p>
+            </div>
+            <div class="box3" style="margin-top: -30px; padding-bottom: 5px;">
+                <b class="info" style="font-size: large;">Total</b>
+                <b   class="info" style="font-size: large;">{{totalPagar | currency:'' :'symbol':'3.0'}}</b>
+            </div>
+            <div class="pay">
+                <img class="icon" src="assets/logos/payu.png" alt="https://www.flaticon.es/iconos-gratis/payu">
+                <p>
+                    Paga mas facil con PayU Colombia
+                </p>
+                <p>Más de 14 métodos de pago</p>
+            </div>
+            <p class="privacidad">
+                Sus datos personales se utilizarán para respaldar su experiencia en este sitio web, para administrar el acceso a su cuenta y 
+                para otros fines descritos en nuestro <b>política de privacidad.</b> <br>
+                Procafecol S.A. emite factura electrónica por ventas realizadas a través de la Tienda Online Panela San Isidro.
+            </p>
+            <div class="pay" style="flex-direction: row; align-items: center;">
+                <input class="checkbox" type="checkbox">
+                <p>He leído y estoy de acuerdo con los términos y condiciones de la web *</p>
+            </div>
+            <button [disabled]="user.invalid" type="submit" class="boton">
+                Confirmar pedido
+            </button>
+    
+            <div class="payU">
+                <form ngNoForm class="fomrularioPayu" *ngIf="estadoPayu" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                    <input name="merchantId"      type="hidden"  value={{infoPayu[0].merchantId}}>
+                    <input name="accountId"       type="hidden"  value={{infoPayu[0].accountId}}>
+                    <input name="description"     type="hidden"  value={{infoPayu[0].description}}>
+                    <input name="referenceCode"   type="hidden"  value={{infoPayu[0].referenceCode}}>
+                    <input name="amount"          type="hidden"  value={{infoPayu[0].amount}}   >
+                    <input name="tax"             type="hidden"  value={{infoPayu[0].tax}}>
+                    <input name="taxReturnBase"   type="hidden"  value={{infoPayu[0].taxReturnBase}}>
+                    <input name="currency"        type="hidden"  value={{infoPayu[0].currency}}>
+                    <input name="signature"       type="hidden"  value={{infoPayu[0].signature}}  >
+                    <input name="test"            type="hidden"  value={{infoPayu[0].test}} >
+                    <input name="buyerEmail"      type="hidden"  value={{infoPayu[0].buyerEmail}}>
+                    <input name="responseUrl"     type="hidden"  value={{infoPayu[0].responseUrl}} >
+                    <input name="confirmationUrl" type="hidden"  value={{infoPayu[0].confirmationUrl}} >
+                    <input (click)="enviar()" class="boton" name="Submit" type="submit" value="Pagar PayU" >
+                </form>
+                <button class="boton" (click)="enviar()">ENVIAR PEDIDO</button>
+            </div>
+              
+        </div>
+    </form>
+</div>

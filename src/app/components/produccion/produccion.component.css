@@ -1,0 +1,61 @@
+*{
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    height: max-content;
+    gap: 30px;
+    padding: 30px;
+}
+.contenedor > p{
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+}
+.contenedor > h2{
+    color: rgb(17, 188, 17);
+}
+.box{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 350px));
+    grid-row-gap: 50px;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: max-content;
+    border-radius: 8px;
+    padding: 10px;
+    animation-duration: 0.5s;
+    box-shadow: 0 1px 3px 3px rgb(222, 222, 222);
+}
+.card:hover{
+    box-shadow: 0 1px 3px 3px rgb(179, 179, 179);
+}
+.fotos{
+    display: flex;
+    width: 100%;
+    height: max-content;
+    border-radius: 8px;
+}
+@media screen and (max-width: 500px) {
+    .contenedor > h2{
+        font-size: large;
+    }
+}

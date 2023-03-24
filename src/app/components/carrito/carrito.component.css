@@ -1,0 +1,222 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    height: 100%;
+    gap: 20px;
+    padding: 60px 140px;
+}
+.mensaje{
+    display: flex;
+    width: 100%;
+    padding: 30px 10px;
+    height: 40px;
+    border: solid rgba(236, 207, 207, 0.5) 1px;
+    background-color: rgb(236, 207, 207, 0.5);
+    align-items: center;
+    gap: 5px;
+}
+.icon-alerta{
+    display: flex;
+    width: 35px;
+    height: 35px;
+}
+.icon{
+    display: flex;
+    width: 10px;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+.goodtext{
+    background-color: rgb(41, 179, 41);
+    color: white;
+}
+
+/* --------- descripcion de productos del carro-------- */
+
+.descripcion{
+    display: flex;
+    padding-top: 30px;
+    width: 100%;
+    height: max-content;
+    gap: 20px;
+}
+.tabla1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 65%;
+    height: max-content;
+
+}
+tr{
+    display: grid;
+    width: 100%;
+    height: max-content;
+    grid-template-columns: 7% 16% 30% 15% 15% 17%;
+}
+th,td{display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    text-align: start;    
+}
+.agregar{
+    display: flex;
+    justify-content: center;
+}
+.panela-foto{
+    width: 100%;
+}
+.add{
+    display: flex;
+    border: solid rgb(105, 93, 93) 0.5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.curva-izq{
+    border-start-start-radius: 8px;
+    border-end-start-radius: 8px;
+}
+.curva-der{
+    border-start-end-radius: 8px;
+    border-end-end-radius: 8px;
+}
+/* --------------factura------- */
+
+.factura{
+    display: flex;
+    flex-direction: column;
+    border: solid rgb(143, 139, 139) 2px;
+    width: 35%;
+    height: max-content;
+    padding: 5px 10px;
+    gap: 20px;
+}
+.papel{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+}
+.resumen{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    height: max-content;
+    border-bottom: solid rgb(211, 208, 208) 1px;
+    padding: 20px 10px;
+}
+.boton{
+    display: flex;
+    width: 100%;
+    height: max-content;
+    padding: 10px 10px;
+    border: none;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-size: x-large;
+    cursor: pointer;
+}
+.car-products{
+    display: none;
+    transition: display 1s;
+}
+.car-products2{
+    display: none;
+    transition: display 1s;
+}
+.icon-logo{
+    display: flex;
+    width: 100%;
+    width: 500px;
+    height: 100%;
+    max-height: 250px;
+}
+.car{
+    display: flex;
+    width: 100%;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 1150px) {
+    .contenedor{
+        padding: 60px 80px;
+    }
+    .descripcion{
+        flex-direction: column;
+    }
+    .tabla1{
+        width: 100%;
+    }
+    .factura{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .contenedor{
+        padding: 60px 80px;
+    }
+    .descripcion{
+        flex-direction: column;
+    }
+    .tabla1{
+        display: none;
+    }
+    .factura{
+        width: 100%;
+    }
+    .car-products{
+        display: grid;
+        grid-template-columns: 30% 70%;
+        width: 100%;
+        height: max-content;
+    }
+    .car-products2{
+        display: flex;
+        width: 100%;
+        height: max-content;
+    }
+    .car-descrip{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+        gap: 10px;
+    }
+    .car-info{
+        display: flex;
+        width: 100%;
+        height: max-content;
+        gap: 5px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: solid rgb(211, 208, 208) 1px;
+        padding: 2px;
+    }
+}
+@media screen and (max-width: 550px) {
+    .contenedor{
+        padding: 60px 20px;
+    }
+    *{
+        font-size: medium;
+    }
+    .mensaje{
+        height: max-content;
+        padding: 10px 20px;
+    }
+}

@@ -1,0 +1,79 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1.5px;
+    font-family: sans-serif;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1366px;
+    padding: 40px 0px;
+    gap: 20px;
+}
+.box > h3{
+    text-align: center;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    gap: 20px;
+    align-items: center;
+    background-color: rgb(249, 249, 249);
+}
+table{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+tr{
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    width: 100%;
+}
+th,td{
+    display: flex;
+    border: 1px dashed rgb(225, 225, 225);
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: small;
+}
+th{
+    font-size: x-small;
+}
+.vista2{
+    display: none;
+}
+.facturacion{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    align-self: flex-start;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    border: dashed 1px rgb(224, 224, 224);
+}
+@media screen and (max-width: 500px) {
+    tr{
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        width: 100%;
+    }
+    .vista2{
+        display: flex;
+    }
+    .vista1{
+        display: none;
+    }
+}
