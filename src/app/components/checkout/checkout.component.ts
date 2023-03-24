@@ -34,6 +34,7 @@ export class CheckoutComponent implements OnInit {
   idDep: string = '';
   stateMun: boolean = false;
   public estadoPayu: boolean = false;
+  checkout: boolean = true;
 
   //-----variables payu---------
   merchantId?: number
@@ -54,7 +55,7 @@ export class CheckoutComponent implements OnInit {
     taxReturnBase: 16200,
     currency: 'COP',
     signature: 'df2410c263f743593a01aa2b90525f2b',
-    test: 0,
+    test: 1,
     buyerEmail: 'jonathanmelo0905@gmail.com',
     telephone: 3104818398,
     buyerFullName: 'jonathan melo',
@@ -222,5 +223,8 @@ export class CheckoutComponent implements OnInit {
     )
   }
 
+  res(){
+    console.log(this.checkout)
+  }
 
 }
