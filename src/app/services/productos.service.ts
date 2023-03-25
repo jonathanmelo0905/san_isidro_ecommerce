@@ -9,8 +9,8 @@ import { Pedido } from '../models/pedidos/pedidos.module';
 })
 export class ProductosService {
 
-  // API_URL = 'http://localhost:3000/habitat';
-  API_URL = 'https://jonathanmelo.online/habitat'
+  API_URL = 'http://localhost:3000/ecommerce';
+  // API_URL = 'https://jonathanmelo.online/habitat'
 
   constructor( private http: HttpClient ) { }
 
@@ -26,5 +26,14 @@ export class ProductosService {
 
   public savePedido(pedido: Pedido){
     return this.http.post(`${this.API_URL}/pedido`, pedido)
+  }
+
+  public getPedido(){
+    return this.http.get(`${this.API_URL}/getPedidos`)
+  }
+
+  
+  public getConfirmation(){
+    return this.http.get(`${this.API_URL}/getConfirmation`)
   }
 }

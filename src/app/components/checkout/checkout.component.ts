@@ -114,7 +114,6 @@ export class CheckoutComponent implements OnInit {
     this.pedido.nota = data.nota;
     this.pedido.estado = 'en preparacion';
     console.log("🚀 ~ file: checkout.component.ts:110 ~ CheckoutComponent ~ this.pedido:", this.pedido)
-    
   }
 
 
