@@ -13,7 +13,8 @@ export class OrdersComponent implements OnInit {
   pedido: any = [];
   listPedido: any = [];
   confirmation: any = [];
-  info: any = []
+  info: any = [];
+  mensaje = '';
 
   referencia: string = ''
 
@@ -62,6 +63,9 @@ export class OrdersComponent implements OnInit {
     console.log(this.listPedido)
     console.log(JSON.parse(confirmation[0].resCompra));
     this.info = JSON.parse(confirmation[0].resCompra);
+    if(this.info.response_message_pol === 'APPROVED'){
+      this.mensaje = 'APROVADO'
+    }
   }
 
 }

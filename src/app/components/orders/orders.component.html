@@ -1,60 +1,61 @@
 <div class="contenedor">
-    <h1>PAGINA EN DESARROLLO</h1>
-    <h2>PROXIMAMENTE</h2>
-    <h3>Jonathan Melo</h3>
+    <h3>Ingresa la referencia de pago enviada a tu correo y verifica el estado de tu pedido.</h3>
+  <div class="box">
     <label for="referencia">Referencia de pago</label>
-    <input id="referencia" type="text" [(ngModel)]="referencia">
+    <input id="referencia" type="text" [(ngModel)]="referencia" />
     <button (click)="seeOrder()">Buscar mi pedido</button>
+  </div>
 
-    <h3>Informacion de tu pedido</h3>
+  <h3>Resumen de tu pedido</h3>
+  <div>
+    <p>Estado: {{ mensaje }}</p>
+  </div>
 
-    <div>
-        Estado del pedido: {{info[0]}}
-    </div>
-  
-    <table class="tabla1">
-        <h2 style="padding: 20px 0;">Resumen de tu pedido</h2>  
-        <tr>
-            <th></th>
-            <th><p>PRODUCTOS</p></th>
-            <th>PRECIO</th>
-            <th>CATIDAD</th>
-            <th>SUBTOTAL</th>
-        </tr>
-        <tr *ngFor="let producto of listPedido; index as i" style="border-bottom: solid rgb(219, 219, 219) 2px;">
-            <td><img class="panela-foto" src={{producto.url}} alt=""></td>
-            <td>{{producto.name}}</td>
-            <td>{{producto.precio | currency:'' :'symbol':'3.0'}}</td>
-            <td>
-                {{producto.cantidad}}
-            </td>
-            <td>{{producto.subtotal | currency:'' :'symbol':'3.0'}}</td>
-        </tr>
-    </table>
+  <table class="tabla1">
+    <h2 style="padding: 20px 0">Resumen de tu pedido</h2>
+    <tr>
+      <th></th>
+      <th><p>PRODUCTOS</p></th>
+      <th>PRECIO</th>
+      <th>CATIDAD</th>
+      <th>SUBTOTAL</th>
+    </tr>
+    <tr
+      *ngFor="let producto of listPedido; index as i"
+      style="border-bottom: solid rgb(219, 219, 219) 2px"
+    >
+      <td><img class="panela-foto" src="{{ producto.url }}" alt="" /></td>
+      <td>{{ producto.name }}</td>
+      <td>{{ producto.precio | currency : "" : "symbol" : "3.0" }}</td>
+      <td>
+        {{ producto.cantidad }}
+      </td>
+      <td>{{ producto.subtotal | currency : "" : "symbol" : "3.0" }}</td>
+    </tr>
+  </table>
 
-    
-    <div class="car-products">
-        <ng-container *ngFor="let producto of listPedido; index as i;">
-            <div class="car-foto">
-                <img class="panela-foto" src={{producto.url}} alt="">
-            </div>
-            <div class="car-descrip">
-                <p style="padding-bottom: 30px;">{{producto.name}}</p>
-                <div class="car-info">
-                    <p>Precio:</p>
-                    <p>${{producto.precio | currency:'' :'symbol':'3.0'}}</p>
-                </div>
-                <div class="car-info">
-                    <p>Cantidad:</p>
-                    <div class="agregar">
-                        <p>{{ producto.cantidad }}</p>
-                    </div>
-                </div>
-                <div class="car-info">
-                    <p>Subtotal:</p>
-                    <p>${{producto.subtotal | currency:'' :'symbol':'3.0'}}</p>
-                </div>
-            </div>
-        </ng-container>
-    </div>
+  <div class="car-products">
+    <ng-container *ngFor="let producto of listPedido; index as i">
+      <div class="car-foto">
+        <img class="panela-foto" src="{{ producto.url }}" alt="" />
+      </div>
+      <div class="car-descrip">
+        <p style="padding-bottom: 30px">{{ producto.name }}</p>
+        <div class="car-info">
+          <p>Precio:</p>
+          <p>${{ producto.precio | currency : "" : "symbol" : "3.0" }}</p>
+        </div>
+        <div class="car-info">
+          <p>Cantidad:</p>
+          <div class="agregar">
+            <p>{{ producto.cantidad }}</p>
+          </div>
+        </div>
+        <div class="car-info">
+          <p>Subtotal:</p>
+          <p>${{ producto.subtotal | currency : "" : "symbol" : "3.0" }}</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </div>
