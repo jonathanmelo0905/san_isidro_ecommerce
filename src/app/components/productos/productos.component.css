@@ -153,8 +153,21 @@ p{
     aspect-ratio: 1;
 }
 
+.enviosinfo{
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: rgb(225, 225, 225);
+    padding: 20px 0;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    animation-name: info;
+    overflow: hidden;
+    animation-duration: 4s;
+}
 @media screen and (max-width: 600px) {
-    .marcas{
+    .enviosinfo,.marcas{
         flex-direction: column;
     }
 }

@@ -1,60 +1,90 @@
 <div class="contenedor">
-    <h3>Ingresa la referencia de pago enviada a tu correo y verifica el estado de tu pedido.</h3>
+  <h3>Ingresa la referencia de pago enviada a tu correo y verifica el estado de tu pedido.</h3>
   <div class="box">
     <label for="referencia">Referencia de pago</label>
     <input id="referencia" type="text" [(ngModel)]="referencia" />
     <button (click)="seeOrder()">Buscar mi pedido</button>
   </div>
-
-  <h3>Resumen de tu pedido</h3>
-  <div>
-    <p>Estado: {{ mensaje }}</p>
-  </div>
-
-  <table class="tabla1">
-    <h2 style="padding: 20px 0">Resumen de tu pedido</h2>
-    <tr>
-      <th></th>
-      <th><p>PRODUCTOS</p></th>
-      <th>PRECIO</th>
-      <th>CATIDAD</th>
-      <th>SUBTOTAL</th>
-    </tr>
-    <tr
-      *ngFor="let producto of listPedido; index as i"
-      style="border-bottom: solid rgb(219, 219, 219) 2px"
-    >
-      <td><img class="panela-foto" src="{{ producto.url }}" alt="" /></td>
-      <td>{{ producto.name }}</td>
-      <td>{{ producto.precio | currency : "" : "symbol" : "3.0" }}</td>
-      <td>
-        {{ producto.cantidad }}
-      </td>
-      <td>{{ producto.subtotal | currency : "" : "symbol" : "3.0" }}</td>
-    </tr>
-  </table>
-
-  <div class="car-products">
-    <ng-container *ngFor="let producto of listPedido; index as i">
-      <div class="car-foto">
-        <img class="panela-foto" src="{{ producto.url }}" alt="" />
+  <div class="box2">
+    <div class="mensaje" *ngIf="stateMensaje">
+      <h3>Tu <b>codigo de pedido</b> no se encontro en nuestra Base de Datos</h3>
+      <p class="texto">Revisa el codigo e intenta de nuevo. <br>Si no te funciona comunicate con nosotros mediante whatsapp <br> Te brindaremos ayuda con el resumen de tu compra</p>
+    </div>
+    <div class="box4" *ngIf="!stateSeacrh && !stateMensaje">
+      <h2>MIS PEDIDOS</h2>
+      <p>Aqui puedes revisar el estado de tus pedidos, solo tienes que ingresar el codigo de referencia de tu pedido, si no sabes cual es, puedes revisar tu correo electronico registrado en la informacion del cliente al cual se te envio un resumen de tu compra. Si no lo tienes puedes comunicarte con nostros por whatsapp enviado tu numero de cedula y te brindaremos tu codigo de referencia.</p>
+      <h3>Para pagos mediante PayU</h3>
+      <p>Si al buscar tu pedido no lo encuentras o no es lo que compraste puedes comunicarte con nostros a traves de whatsapp enviandonos el soporte de pago PayU(este normalmente payu lo envia a tu correo electronico).</p>
+      <h3>Pagos mediante trasnferencia Bancaria</h3>
+      <p>Si realizaste el pago por medio de transferencia bancaria envianos el soporte de pago mediante whatsapp, nosotros nos encargaremos de enlazar tu pago con tu compra para que puedas ver el resumen y hacerle seguimiento.</p>
+    </div>
+    <ng-container *ngIf="stateSeacrh">
+      <div>
+        <h3>Resumen de tu pedido</h3>
+        <h2>{{ mensaje }}</h2>
+        <p>Estado: <b>{{infoCliente.estado}}</b></p>
       </div>
-      <div class="car-descrip">
-        <p style="padding-bottom: 30px">{{ producto.name }}</p>
-        <div class="car-info">
-          <p>Precio:</p>
-          <p>${{ producto.precio | currency : "" : "symbol" : "3.0" }}</p>
+      <div class="box3">
+        <div class="info">
+          <h3>Informacion del cliente:</h3>
+          <p><b>Nombres y Apellidos:</b></p>
+          <p style="text-transform: uppercase;">{{infoCliente.names}} {{infoCliente.surnames}}</p>
+          <p><b>{{type}}:</b> {{infoCliente.cedula}}</p>
+          <p><b>Celular:</b> {{infoCliente.telefono}}</p>
+          <p><b>Correo:</b> {{infoCliente.email}}</p>
         </div>
-        <div class="car-info">
-          <p>Cantidad:</p>
-          <div class="agregar">
-            <p>{{ producto.cantidad }}</p>
+        <div class="info">
+          <h3>Informacion de envio:</h3>
+          <p><b>Departamento:</b> {{infoCliente.departamento}}</p>
+          <p><b>Municipio:</b> {{infoCliente.municipio}}</p>
+          <p><b>Direccion:</b> {{infoCliente.direccion}}</p>
+          <p><b>Nota:</b> {{infoCliente.nota}}</p>
+        </div>
+      </div>
+      <table class="tabla1">
+        <h2 style="padding: 20px 0">Resumen de tu pedido</h2>
+        <tr>
+          <th></th>
+          <th>
+            <p>PRODUCTOS</p>
+          </th>
+          <th>PRECIO</th>
+          <th>CATIDAD</th>
+          <th>SUBTOTAL</th>
+        </tr>
+        <tr *ngFor="let producto of listPedido; index as i" style="border-bottom: solid rgb(219, 219, 219) 2px">
+          <td><img class="panela-foto" src="{{ producto.url }}" alt="" /></td>
+          <td>{{ producto.name }}</td>
+          <td>{{ producto.precio | currency : "" : "symbol" : "3.0" }}</td>
+          <td>
+            {{ producto.cantidad }}
+          </td>
+          <td>{{ producto.subtotal | currency : "" : "symbol" : "3.0" }}</td>
+        </tr>
+      </table>
+      <div class="car-products">
+        <ng-container *ngFor="let producto of listPedido; index as i">
+          <div class="car-foto">
+            <img class="panela-foto" src="{{ producto.url }}" alt="" />
           </div>
-        </div>
-        <div class="car-info">
-          <p>Subtotal:</p>
-          <p>${{ producto.subtotal | currency : "" : "symbol" : "3.0" }}</p>
-        </div>
+          <div class="car-descrip">
+            <p style="padding-bottom: 30px">{{ producto.name }}</p>
+            <div class="car-info">
+              <p>Precio:</p>
+              <p>{{ producto.precio | currency : "" : "symbol" : "3.0" }}</p>
+            </div>
+            <div class="car-info">
+              <p>Cantidad:</p>
+              <div class="agregar">
+                <p>{{ producto.cantidad }}</p>
+              </div>
+            </div>
+            <div class="car-info">
+              <p>Subtotal:</p>
+              <p>{{ producto.subtotal | currency : "" : "symbol" : "3.0" }}</p>
+            </div>
+          </div>
+        </ng-container>
       </div>
     </ng-container>
   </div>

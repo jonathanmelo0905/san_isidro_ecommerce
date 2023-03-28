@@ -14,9 +14,13 @@ export class OrdersComponent implements OnInit {
   listPedido: any = [];
   confirmation: any = [];
   info: any = [];
+  infoCliente: any = [];
   mensaje = '';
-
   referencia: string = ''
+  type: string = '';
+  stateSeacrh: boolean = false;
+  stateMensaje: boolean = false;
+
 
   constructor(
     private productservices : ProductosService
@@ -53,18 +57,29 @@ export class OrdersComponent implements OnInit {
         return n
       }
     })
-
     let pedido = this.dataInfo.filter( (n: any) =>{
       if(n.referenceCode == this.referencia){
         return n
       }
     })
-    this.listPedido = JSON.parse(pedido[0].pedido)
-    console.log(this.listPedido)
-    console.log(JSON.parse(confirmation[0].resCompra));
-    this.info = JSON.parse(confirmation[0].resCompra);
-    if(this.info.response_message_pol === 'APPROVED'){
-      this.mensaje = 'APROVADO'
+    if(confirmation.length != 0 && pedido.legth != 0){
+      this.stateSeacrh = true;
+      this.infoCliente = pedido[0];
+      console.log("🚀 ~ file: orders.component.ts:64 ~ OrdersComponent ~ seeOrder ~ this.infoCliente:", this.infoCliente)
+      this.listPedido = JSON.parse(pedido[0].pedido)
+      console.log(this.listPedido)
+      console.log(JSON.parse(confirmation[0].resCompra));
+      this.info = JSON.parse(confirmation[0].resCompra);
+      if(this.info.response_message_pol === 'APPROVED'){
+        this.mensaje = 'APROVADO'
+      }
+      this.infoCliente.type === 'CC' ? this.type = 'Cedula' : this.type = 'Nit';
+    }else{
+      this.stateMensaje = true;
+      this.stateSeacrh = false;
+      setTimeout(() =>{
+        this.stateMensaje = false;        
+      },4000)
     }
   }
 

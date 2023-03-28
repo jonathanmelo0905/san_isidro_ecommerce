@@ -9,7 +9,7 @@ import { Pedido } from '../models/pedidos/pedidos.module';
 })
 export class ProductosService {
 
-  API_URL = 'http://localhost:3000/ecommerce';
+  API_URL = 'http://192.168.0.109:3000/ecommerce';
   // API_URL = 'https://jonathanmelo.online/habitat'
 
   constructor( private http: HttpClient ) { }
